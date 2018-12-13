@@ -1,0 +1,24 @@
+{
+  "name": "retaile-app-api",
+  "version": "1.0.0",
+  "description": "For The Retailer App Api which will send the details to the api and for order routes",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gitesh-Shastri/Retailer-App-Api.git"
+  },
+  "keywords": [
+    "retailer-app",
+    "medicento",
+    "api"
+  ],
+  "author": "Medicento",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gitesh-Shastri/Retailer-App-Api/issues"
+  },
+  "homepage": "https://github.com/Gitesh-Shastri/Retailer-App-Api#readme"
+}
