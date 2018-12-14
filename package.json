@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/Gitesh-Shastri/Retailer-App-Api/issues"
   },
-  "homepage": "https://github.com/Gitesh-Shastri/Retailer-App-Api#readme"
+  "homepage": "https://github.com/Gitesh-Shastri/Retailer-App-Api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.16",
+    "morgan": "^1.9.1",
+    "nodemailer": "^4.7.0",
+    "nodemon": "^1.18.8"
+  }
 }

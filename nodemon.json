@@ -1,0 +1,5 @@
+{
+  "env": {
+    "MONGODB_URI": "mongodb://GiteshMedi:shastri1@ds263590.mlab.com:63590/medicento"
+  }
+}
