@@ -66,16 +66,22 @@ router.get("/recent_order/:id", (req, res, next) => {
         });
 });
 
-router.get("/notification", (req, res, next) => {
-    Camp.find()
+router.get('/updateApp', (req, res, next) => {
+    Message.find()
         .exec()
         .then(doc => {
-            var doc1 = doc[doc.length - 1];
             res.status(200).json({
-                title: doc1.name,
-                type: doc1.type,
-                content: doc1.content
-            });
+                code: doc[0].code,
+                count: doc[0].count,
+                "Version": [{
+                    "version": "2.0.8",
+                    "error": "01"
+                }],
+                "Controle": [{
+                    "version": "2.0.8",
+                    "error": "01"
+                }]
+            })
         })
         .catch(err => {
             res.status(500).json({
