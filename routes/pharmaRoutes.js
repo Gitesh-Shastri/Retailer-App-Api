@@ -4,29 +4,55 @@ const router = express.Router();
 
 const Pharmacy = require('../models/pharmacy');
 
+const User = require('../models/user');
+
+const Person = require('../models/sperson');
+
+const Code = require('../models/usercode');
+
 router.post('/new', (req, res, next) => {
-    const pharma = new Pharmacy({
-        _id: mongoose.Types.ObjectId(),
-        pharma_name: req.body[i].pharma_name,
-        area: req.body.area_id,
-        pharma_address: req.body.pharma_address,
-        gst_license: req.body.gst,
-        drug_license: req.body.drug,
-        email: req.body.email,
-        contact: req.body.phone,
-        owner_name: name
-    });
-    pharma.save()
-        .then(result => {
-            console.log(result);
-            res.status(200).json(result);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                error: err
-            });
+    Code.find().exec().then(doc => {
+        const pharma = new Pharmacy({
+            _id: mongoose.Types.ObjectId(),
+            pharma_name: req.body[i].pharma_name,
+            area: req.body.area_id,
+            pharma_address: req.body.pharma_address,
+            gst_license: req.body.gst,
+            drug_license: req.body.drug,
+            email: req.body.email,
+            contact: req.body.phone,
+            owner_name: name
         });
+        const user = new User({
+            useremail: req.body.email,
+            usercode: doc[0].code,
+            phone: req.body.phone
+        });
+        doc[0].code = doc[0].code + 1;
+        doc[0].save();
+        user.save();
+        pharma.save();
+        const Person = new Person({
+            user: user._id,
+            Name: req.body[i].pharma_name,
+            Allocated_Area: req.body.area_id,
+            Allocated_Pharma: pharma._id
+        });
+        Person.save();
+        console.log(err);
+        res.status(200).json({
+            code: pharma.code
+        });
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+});
+
+router.post('/signUp', (rrq, res, next) => {
+
 });
 
 router.post('/update/:pharmaId', (req, res, next) => {
