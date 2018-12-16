@@ -4,6 +4,8 @@ const router = express.Router();
 
 const Pharmacy = require('../models/pharmacy');
 
+const mongoose = require('mongoose');
+
 const User = require('../models/user');
 
 const Person = require('../models/sperson');
@@ -12,16 +14,18 @@ const Code = require('../models/usercode');
 
 router.post('/new', (req, res, next) => {
     Code.find().exec().then(doc => {
+	console.log(doc);
         const pharma = new Pharmacy({
             _id: mongoose.Types.ObjectId(),
-            pharma_name: req.body[i].pharma_name,
+            pharma_name: req.body.pharma_name,
             area: req.body.area_id,
             pharma_address: req.body.pharma_address,
             gst_license: req.body.gst,
             drug_license: req.body.drug,
             email: req.body.email,
             contact: req.body.phone,
-            owner_name: name
+            owner_name: req.body.name,
+	    pincode: req.body.pincode
         });
         const user = new User({
             useremail: req.body.email,
@@ -32,16 +36,16 @@ router.post('/new', (req, res, next) => {
         doc[0].save();
         user.save();
         pharma.save();
-        const Person = new Person({
+        const person = new Person({
             user: user._id,
-            Name: req.body[i].pharma_name,
+            Name: req.body.pharma_name,
             Allocated_Area: req.body.area_id,
             Allocated_Pharma: pharma._id
         });
-        Person.save();
-        console.log(err);
+        person.save();
+        console.log(person);
         res.status(200).json({
-            code: pharma.code
+            code: user.usercode
         });
     }).catch(err => {
         console.log(err);

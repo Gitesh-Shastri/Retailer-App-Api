@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const pharmaSchema = mongoose.Schema({
-	code: {
+const userCodeSchema = mongoose.Schema({
+code: {
         type: Number
     }
 });
 
-module.exports = mongoose.model('USerCode', pharmaSchema);
+module.exports = mongoose.model('USerCode', userCodeSchema);

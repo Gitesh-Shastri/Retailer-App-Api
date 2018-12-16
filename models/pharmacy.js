@@ -26,6 +26,9 @@ const pharmaSchema = mongoose.Schema({
 	},
 	owner_name: {
 		type: String
+	},
+	pincode: {
+		type: String	
 	}
 });
 
