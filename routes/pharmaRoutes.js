@@ -14,7 +14,7 @@ const Code = require('../models/usercode');
 
 router.post('/new', (req, res, next) => {
     Code.find().exec().then(doc => {
-	console.log(doc);
+        console.log(doc);
         const pharma = new Pharmacy({
             _id: mongoose.Types.ObjectId(),
             pharma_name: req.body.pharma_name,
@@ -25,7 +25,7 @@ router.post('/new', (req, res, next) => {
             email: req.body.email,
             contact: req.body.phone,
             owner_name: req.body.name,
-	    pincode: req.body.pincode
+            pincode: req.body.pincode
         });
         const user = new User({
             useremail: req.body.email,
@@ -53,10 +53,6 @@ router.post('/new', (req, res, next) => {
             error: err
         });
     });
-});
-
-router.post('/signUp', (rrq, res, next) => {
-
 });
 
 router.post('/update/:pharmaId', (req, res, next) => {
