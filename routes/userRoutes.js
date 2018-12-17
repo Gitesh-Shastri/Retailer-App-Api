@@ -66,7 +66,7 @@ router.post('/login', (req, res, next) => {
                         });
                     }).catch(err => {
                         console.log(err);
-                        res.status(500).json({
+                        res.status(200).json({
                             error: err
                         });
                     });
@@ -120,13 +120,13 @@ router.post('/login', (req, res, next) => {
                         });
                     }).catch(err => {
                         console.log(err);
-                        res.status(500).json({
+                        res.status(200).json({
                             error: err
                         });
                     });
                 }
             }).catch(err => {
-                res.status(500).json({
+                res.status(200).json({
                     err: err
                 });
             });
@@ -152,7 +152,7 @@ router.get('/login', (req, res, next) => {
                     });
             })
             .catch(err => {
-                res.status(500).json({
+                res.status(200).json({
                     message: "Invalid Useremail or password"
                 });
             });
@@ -174,7 +174,7 @@ router.get('/login', (req, res, next) => {
                     });
             })
             .catch(err => {
-                res.status(500).json({
+                res.status(200).json({
                     message: "Invalid Phone Number"
                 });
             });
@@ -196,7 +196,7 @@ router.get('/login', (req, res, next) => {
                     });
             })
             .catch(err => {
-                res.status(500).json({
+                res.status(200).json({
                     message: "Invalid Useremail or password"
                 });
             });
