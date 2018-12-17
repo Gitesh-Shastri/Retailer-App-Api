@@ -217,12 +217,12 @@ router.get('/forgetPhone', (req, res, next) => {
                 })
             })
             .catch(err => {
-                res.status(500).json({
+                res.status(200).json({
                     message: "Invalid Phone"
                 });
             })
     } else {
-        res.status(500).json({
+        res.status(200).json({
             message: "Invalid Phone"
         });
     }
