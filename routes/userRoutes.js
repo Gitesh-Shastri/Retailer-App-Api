@@ -203,4 +203,29 @@ router.get('/login', (req, res, next) => {
     }
 });
 
+router.get('/forgetPhone', (req, res, next) => {
+    console.log(req.query);
+    if (req.query.phone != undefined) {
+        User.find({
+                phone: req.query.phone
+            })
+            .exec()
+            .then(phone => {
+                res.status(200).json({
+                    message: "user found",
+                    code: phone[0].usercode
+                })
+            })
+            .catch(err => {
+                res.status(500).json({
+                    message: "Invalid Phone"
+                });
+            })
+    } else {
+        res.status(500).json({
+            message: "Invalid Phone"
+        });
+    }
+});
+
 module.exports = router;
