@@ -211,8 +211,23 @@ router.get('/profile', (req, res, next) => {
         .populate('Allocated_Pharma')
         .exec()
         .then(perosnDoc => {
+            if (perosnDoc.Allocated_Pharma.owner_name == undefined) {
+                perosnDoc.Allocated_Pharma.owner_name = "";
+            }
+            if (perosnDoc.Allocated_Pharma.address == undefined) {
+                perosnDoc.Allocated_Pharma.address = "";
+            }
+            if (perosnDoc.user.useremail == undefined) {
+                perosnDoc.user.useremail = "";
+            }
+            if (perosnDoc.user.phone == undefined) {
+                perosnDoc.user.phone = "";
+            }
             res.status(200).json({
-                person: perosnDoc,
+                email: perosnDoc.user.useremail,
+                phone: perosnDoc.user.phone,
+                owner: perosnDoc.Allocated_Pharma.owner_name,
+                address: perosnDoc.Allocated_Pharma.address,
                 message: 'ID Found !'
             })
         })
