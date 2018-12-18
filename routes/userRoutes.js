@@ -208,7 +208,7 @@ router.get('/profile', (req, res, next) => {
             _id: req.query.id
         })
         .populate('user')
-        .populate('pharmacy')
+        .populate('Allocated_Pharma')
         .exec()
         .then(perosnDoc => {
             res.status(200).json({
