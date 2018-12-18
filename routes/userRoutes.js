@@ -203,6 +203,24 @@ router.get('/login', (req, res, next) => {
     }
 });
 
+router.get('/profile', (req, res, next) => {
+    Person.findById(req.query.id)
+    .exec()
+    .populate('user')
+    .populate('pharmacy')
+    .then( perosnDoc => {
+        res.status(200).json({
+            person: perosnDoc,
+            message: 'ID Found !'
+        })
+    })
+    .catch( err => {
+        res.status(200).json({
+            message: 'Invalid Id !'
+        });
+    });
+});
+
 router.get('/forgetPhone', (req, res, next) => {
     console.log(req.query);
     if (req.query.phone != undefined) {
