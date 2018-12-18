@@ -204,7 +204,9 @@ router.get('/login', (req, res, next) => {
 });
 
 router.get('/profile', (req, res, next) => {
-    Person.findOne(req.query.id)
+    Person.findOne({
+            _id: req.query.id
+        })
         .populate('user')
         .populate('pharmacy')
         .exec()
