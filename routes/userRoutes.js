@@ -20,8 +20,8 @@ router.post("/login", (req, res, next) => {
   console.log(req.body);
   if (req.body.email == "") {
     User.find({
-      phone: req.body.phone
-    })
+        phone: req.body.phone
+      })
       .exec()
       .then((doc1) => {
         if (doc1.length > 0) {
@@ -77,8 +77,8 @@ router.post("/login", (req, res, next) => {
       });
   } else {
     User.find({
-      useremail: req.body.email
-    })
+        useremail: req.body.email
+      })
       .exec()
       .then((user) => {
         if (user.length > 0) {
@@ -119,6 +119,19 @@ router.post("/login", (req, res, next) => {
               });
               person.save();
               console.log(user1);
+              message = "<p>Retailer Login Url : https://medicento-website.herokuapp.com/pharmacy_login</p>" +
+                "<p>Retailer App Link :https://play.google.com/store/apps/details?id=com.medicento.retailerappmedi</p>" +
+                "PharmaCode : " + user1.code;
+              nodeoutlook.sendEmail({
+                auth: {
+                  user: "giteshshastri123@outlook.com",
+                  pass: "shastri@1"
+                },
+                from: "giteshshastri123@outlook.com",
+                to: "" + req.body.email + ",giteshshastri96@gmail.com,contact.medicento@gmail.com",
+                subject: "Thank you for regestering with Medicento!",
+                html: message
+              });
               res.status(200).json({
                 code: user1.usercode,
                 message: "user created !"
@@ -143,14 +156,14 @@ router.post("/login", (req, res, next) => {
 router.get("/login", (req, res, next) => {
   if (req.query.useremail != null) {
     User.findOne({
-      useremail: req.query.useremail
-    })
+        useremail: req.query.useremail
+      })
       .exec()
       .then((user) => {
         console.log(user);
         Person.find({
-          user: user._id
-        })
+            user: user._id
+          })
           .exec()
           .then((doc) => {
             res.status(200).json({
@@ -165,14 +178,14 @@ router.get("/login", (req, res, next) => {
       });
   } else if (req.query.phone != null) {
     User.findOne({
-      phone: req.query.phone
-    })
+        phone: req.query.phone
+      })
       .exec()
       .then((user) => {
         console.log(user);
         Person.find({
-          user: user._id
-        })
+            user: user._id
+          })
           .exec()
           .then((doc) => {
             res.status(200).json({
@@ -187,14 +200,14 @@ router.get("/login", (req, res, next) => {
       });
   } else {
     User.findOne({
-      usercode: req.query.usercode
-    })
+        usercode: req.query.usercode
+      })
       .exec()
       .then((user) => {
         console.log(user);
         Person.find({
-          user: user._id
-        })
+            user: user._id
+          })
           .exec()
           .then((doc) => {
             res.status(200).json({
@@ -212,8 +225,8 @@ router.get("/login", (req, res, next) => {
 
 router.get("/profile", (req, res, next) => {
   Person.findOne({
-    _id: req.query.id
-  })
+      _id: req.query.id
+    })
     .populate("user")
     .populate("Allocated_Pharma")
     .exec()
@@ -246,7 +259,9 @@ router.get("/profile", (req, res, next) => {
 });
 
 router.get("/pharmaById/:id", (req, res, next) => {
-  Person.find({ Allocated_Pharma: req.params.id })
+  Person.find({
+      Allocated_Pharma: req.params.id
+    })
     .populate("Allocated_Pharma")
     .populate("user")
     .exec()
@@ -264,8 +279,8 @@ router.get("/forgetPhone", (req, res, next) => {
   console.log(req.query);
   if (req.query.phone != undefined) {
     User.find({
-      phone: req.query.phone
-    })
+        phone: req.query.phone
+      })
       .exec()
       .then((phone) => {
         res.status(200).json({

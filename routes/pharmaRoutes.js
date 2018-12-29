@@ -107,11 +107,11 @@ router.get('/byName/:name', (req, res, next) => {
             console.log(err);
             res.status(500).json({
                 error: err
-            })
+            });
         });
 });
 
-router.get('', (req, res, next) => {
+router.get('', (req, res) => {
     page_no = req.query.page_no;
     start = page_no * 10;
     end = (page_no - 1) * 10;
