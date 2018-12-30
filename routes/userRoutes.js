@@ -10,6 +10,8 @@ const Area = require("../models/area");
 
 const Pharma = require("../models/pharmacy");
 
+const nodeoutlook = require('nodejs-nodemailer-outlook');
+
 const Code = require("../models/usercode");
 
 const Person = require("../models/sperson");
@@ -107,6 +109,7 @@ router.post("/login", (req, res, next) => {
                 usercode: doc[0].code,
                 phone: req.body.phone
               });
+              const code = doc[0].code;
               doc[0].code = doc[0].code + 1;
               doc[0].save();
               user1.save();
@@ -119,18 +122,18 @@ router.post("/login", (req, res, next) => {
               });
               person.save();
               console.log(user1);
-              message = "<p>Retailer Login Url : https://medicento-website.herokuapp.com/pharmacy_login</p>" +
+              message1 = "<p>Retailer Login Url : https://medicento-website.herokuapp.com/pharmacy_login</p>" +
                 "<p>Retailer App Link :https://play.google.com/store/apps/details?id=com.medicento.retailerappmedi</p>" +
-                "PharmaCode : " + user1.code;
+                "PharmaCode : " + code;
               nodeoutlook.sendEmail({
                 auth: {
-                  user: "giteshshastri123@outlook.com",
-                  pass: "shastri@1"
+                  user: "Team.medicento@outlook.com",
+                  pass: "med4lyf@51"
                 },
-                from: "giteshshastri123@outlook.com",
+                from: "Team.medicento@outlook.com",
                 to: "" + req.body.email + ",giteshshastri96@gmail.com,contact.medicento@gmail.com",
                 subject: "Thank you for regestering with Medicento!",
-                html: message
+                html: message1
               });
               res.status(200).json({
                 code: user1.usercode,
