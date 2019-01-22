@@ -300,8 +300,8 @@ router.post("/saleslogin", (req, res, next) => {
               "<br/>"+
               "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: darkgray;color:white\"><th colspan=\"2\" style=\"border: 1px solid #ddd;padding: 8px;align:center\">Contact Details</th></tr>"
               +"<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Salesman Email</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.pharma_name+"</td></tr>"+
-              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center>Phone No.</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
-              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center>Email Id</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.email+"</td></tr>"+
+              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Phone No.</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
+              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Email Id</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.email+"</td></tr>"+
               "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.state+"</td></tr>"+
               "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">City</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.city+"</td></tr></table>"+
               "<br/><br/>Warm Regards, <br/>"+
