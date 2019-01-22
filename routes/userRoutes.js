@@ -292,17 +292,17 @@ router.post("/saleslogin", (req, res, next) => {
               console.log(user1);
               message1 = "<p> Dear "+req.body.pharma_name +", <br/> Warm greetings from Medicento! <br/> Congratulations You have successfully registered as a Salesman with Medicento. Please"+
               " find below details for your reference : </p>"+
-              "<table border=\"1\"><tr><td colspan=\"2\">Login Details</td></tr>"+
-              "<tr><td>SalesId/Username</td><td>"+req.body.salesId+"</td></tr>"+
-              "<tr><td>Password</td><td>"+req.body.password+"</td></tr>"+
+              "<table style=\"border-collapse: collapse;\"><tr style=\"background-color: lightgray;\"><td colspan=\"2\" style=\"border: 1px solid #ddd;padding: 8px;\">Login Details</td></tr>"+
+              "<tr><td style=\"border: 1px solid #ddd;padding: 8px;\">SalesId/Username</td><td style=\"border: 1px solid #ddd;padding: 8px;\">"+req.body.salesId+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;\"><td style=\"border: 1px solid #ddd;padding: 8px;\">Password</td><td style=\"border: 1px solid #ddd;padding: 8px;\">"+req.body.password+"</td></tr></table>"+
               "Url to download the <b>Medicento Sales App!</b>"+
               "https://play.google.com/store/apps/details?id=com.medicento.salesappmedicento<br/>"+
               "Contact Details <br/>"+
-              "<table border=\"1\"><tr><td>Salesman Email</td><td>"+req.body.pharma_name+"</td></tr>"+
-              "<tr><td>Phone No.</td><td>"+req.body.phone+"</td></tr>"+
-              "<tr><td>Email Id</td><td>"+req.body.email+"</td></tr>"+
-              "<tr><td>State</td><td>"+req.body.state+"</td></tr>"+
-              "<tr><td>City</td><td>"+req.body.city+"</td></tr>"+
+              "<table style=\"border-collapse: collapse;\"><tr style=\"background-color: lightgray;\"><td style=\"border: 1px solid #ddd;padding: 8px;\">Salesman Email</td><td style=\"border: 1px solid #ddd;padding: 8px;\">"+req.body.pharma_name+"</td></tr>"+
+              "<tr><td>Phone No.</td><td style=\"border: 1px solid #ddd;padding: 8px;\">"+req.body.phone+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;\"><td>Email Id</td><td style=\"border: 1px solid #ddd;padding: 8px;\">"+req.body.email+"</td></tr>"+
+              "<tr><td style=\"border: 1px solid #ddd;padding: 8px;\">State</td><td style=\"border: 1px solid #ddd;padding: 8px;\">"+req.body.state+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;\"><td style=\"border: 1px solid #ddd;padding: 8px;\">City</td><td style=\"border: 1px solid #ddd;padding: 8px;\">"+req.body.city+"</td></tr></table>"+
               "Warm Regards, <br/>"+
               "Team Medicento<br/>"+
               "<p>This is an auto-generated mail.If you wish to communicatewith us, Please mail us at contact.medicento@gmail.com.</p>"
