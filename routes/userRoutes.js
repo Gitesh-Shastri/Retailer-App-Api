@@ -293,17 +293,17 @@ router.post("/saleslogin", (req, res, next) => {
               message1 = "<p> Dear "+req.body.pharma_name +", <br/> Warm greetings from Medicento! <br/> Congratulations You have successfully registered as a Salesman with Medicento. Please"+
               " find below details for your reference : </p>"+
               "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: darkgray;color:white\"><th colspan=\"2\" style=\"border: 1px solid #ddd;padding: 8px;align:center\">Login Details</th></tr>"+
-              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">SalesId/Username</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.salesId+"</td></tr>"+
-              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Password</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.password+"</td></tr></table>"+
+              "<tr ><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">SalesId/Username</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.salesId+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Password</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.password+"</td></tr></table>"+
               "<br/>URL to download the <b>Medicento Sales App!</b><br/>"+
               "https://play.google.com/store/apps/details?id=com.medicento.salesappmedicento<br/>"+
               "<br/>"+
               "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: darkgray;color:white\"><th colspan=\"2\" style=\"border: 1px solid #ddd;padding: 8px;align:center\">Contact Details</th></tr>"
-              +"<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Salesman Email</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.pharma_name+"</td></tr>"+
-              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Phone No.</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
-              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Email Id</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.email+"</td></tr>"+
-              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.state+"</td></tr>"+
-              "<tr style=\"background-color: darkgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">City</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.city+"</td></tr></table>"+
+              +"<tr ><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Salesman Email</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.pharma_name+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Phone No.</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
+              "<tr ><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Email Id</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.email+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.state+"</td></tr>"+
+              "<tr ><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">City</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.city+"</td></tr></table>"+
               "<br/><br/>Warm Regards, <br/>"+
               "Team Medicento<br/>"+
               "<p>This is an auto-generated mail.If you wish to communicate with us, Please mail <br/>us at contact.medicento@gmail.com.</p>"
