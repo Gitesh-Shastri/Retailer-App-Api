@@ -277,7 +277,6 @@ router.post("/saleslogin", (req, res, next) => {
               doc[0].code = doc[0].code + 1;
               doc[0].save();
               user1.save();
-              pharma.save();
               const person = new Person({
                 user: user1._id,
                 Name: req.body.pharma_name,
