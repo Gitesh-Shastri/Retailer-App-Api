@@ -60,10 +60,26 @@ router.post("/login", (req, res, next) => {
                 user: user1._id,
                 Name: req.body.pharma_name,
                 Allocated_Area: req.body.area_id,
-                Allocated_Pharma: pharma._id
+                Allocated_Pharma: pharma._id,
+                address: req.body.pharma_address,
+                driving: req.body.driving,
+                pan: req.body.pan
               });
               person.save();
               console.log(user1);
+              message1 = "<p>Retailer Login Url : https://medicento-website.herokuapp.com/pharmacy_login</p>" +
+              "<p>Retailer App Link :https://play.google.com/store/apps/details?id=com.medicento.retailerappmedi</p>" +
+              "PharmaCode : " + code;
+            nodeoutlook.sendEmail({
+              auth: {
+                user: "Team.medicento@outlook.com",
+                pass: "med4lyf@51"
+              },
+              from: "Team.medicento@outlook.com",
+              to: "" + req.body.email + ",giteshshastri96@gmail.com,contact.medicento@gmail.com",
+              subject: "Thank you for regestering with Medicento!",
+              html: message1
+            });
               res.status(200).json({
                 code: user1.usercode,
                 message: "user created !"
@@ -155,6 +171,175 @@ router.post("/login", (req, res, next) => {
       });
   }
 });
+
+
+router.post("/saleslogin", (req, res, next) => {
+  console.log(req.body);
+  if (req.body.email == "") {
+    User.find({
+        phone: req.body.phone
+      })
+      .exec()
+      .then((doc1) => {
+        if (doc1.length > 0) {
+          res.status(200).json({
+            message: "User Phone Exists Please Try Another One !"
+          });
+        } else {
+          Code.find()
+            .exec()
+            .then((doc) => {
+              console.log(doc);
+              const user1 = new User({
+                useremail: req.body.phone,
+                usercode: doc[0].code,
+                phone: req.body.phone,
+                password: req.body.password,
+                salesId: req.body.salesId
+              });
+              doc[0].code = doc[0].code + 1;
+              doc[0].save();
+              user1.save();
+              pharma.save();
+              const person = new Person({
+                user: user1._id,
+                Name: req.body.pharma_name,
+                state: req.body.state,
+                city: req.body.city,
+                Allocated_Area: "5b28cf4a4381b00448fcbb27",
+                Allocated_Pharma: "5c1662278583dd0023fed344",
+                address: req.body.pharma_address,
+                driving: req.body.driving,
+                pan: req.body.pan
+              });
+              person.save();
+              console.log(user1);
+              message1 = "<p> Dear "+req.body.pharma_name +", <br/> Warm greetings from Medicento! <br/> Congratulations You have successfully registered as a Salesman with Medicento. Please"+
+              " find below details for your reference : </p>"+
+              "<table border=\"1\"><tr><td colspan=\"2\">Login Details</td></tr>"+
+              "<tr><td>SalesId/Username</td><td>"+req.body.salesId+"</td></tr>"+
+              "<tr><td>Password</td><td>"+req.body.password+"</td></tr>"+
+              "Url to download the <b>Medicento Sales App!</b>"+
+              "https://play.google.com/store/apps/details?id=com.medicento.salesappmedicento<br/>"+
+              "Contact Details <br/>"+
+              "<table border=\"1\"><tr><td>Salesman Email</td><td>"+req.body.pharma_name+"</td></tr>"+
+              "<tr><td>Phone No.</td><td>"+req.body.phone+"</td></tr>"+
+              "<tr><td>Email Id</td><td>"+req.body.email+"</td></tr>"+
+              "<tr><td>State</td><td>"+req.body.state+"</td></tr>"+
+              "<tr><td>City</td><td>"+req.body.city+"</td></tr>"+
+              "Warm Regards, <br/>"+
+              "Team Medicento<br/>"+
+              "<p>This is an auto-generated mail.If you wish to communicatewith us, Please mail us at contact.medicento@gmail.com.</p>"
+              nodeoutlook.sendEmail({
+                auth: {
+                  user: "Team.medicento@outlook.com",
+                  pass: "med4lyf@51"
+                },
+                from: "Team.medicento@outlook.com",
+                to: "" + req.body.email + ",giteshshastri96@gmail.com,contact.medicento@gmail.com",
+                subject: "Hi "+req.body.pharma_name+", You have successfully registered as a Salesman with Medicento!",
+                html: message1
+              });
+              res.status(200).json({
+                code: user1.usercode,
+                message: "user created !"
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(200).json({
+                error: err
+              });
+            });
+        }
+      });
+  } else {
+    User.find({
+        useremail: req.body.email
+      })
+      .exec()
+      .then((user) => {
+        if (user.length > 0) {
+          res.status(200).json({
+            message: "User Email Exists Please Try Another One !"
+          });
+        } else {
+          Code.find()
+            .exec()
+            .then((doc) => {
+              console.log(doc);
+              const user1 = new User({
+                useremail: req.body.email,
+                usercode: doc[0].code,
+                phone: req.body.phone,
+                password: req.body.password,
+                salesId: req.body.salesId
+              });
+              const code = doc[0].code;
+              doc[0].code = doc[0].code + 1;
+              doc[0].save();
+              user1.save();
+              pharma.save();
+              const person = new Person({
+                user: user1._id,
+                Name: req.body.pharma_name,
+                state: req.body.state,
+                city: req.body.city,
+                Allocated_Area: "5b28cf4a4381b00448fcbb27",
+                Allocated_Pharma: "5c1662278583dd0023fed344",
+                address: req.body.pharma_address,
+                driving: req.body.driving,
+                pan: req.body.pan
+              });
+              person.save();
+              console.log(user1);
+              message1 = "<p> Dear "+req.body.pharma_name +", <br/> Warm greetings from Medicento! <br/> Congratulations You have successfully registered as a Salesman with Medicento. Please"+
+              " find below details for your reference : </p>"+
+              "<table border=\"1\"><tr><td colspan=\"2\">Login Details</td></tr>"+
+              "<tr><td>SalesId/Username</td><td>"+req.body.salesId+"</td></tr>"+
+              "<tr><td>Password</td><td>"+req.body.password+"</td></tr>"+
+              "Url to download the <b>Medicento Sales App!</b>"+
+              "https://play.google.com/store/apps/details?id=com.medicento.salesappmedicento<br/>"+
+              "Contact Details <br/>"+
+              "<table border=\"1\"><tr><td>Salesman Email</td><td>"+req.body.pharma_name+"</td></tr>"+
+              "<tr><td>Phone No.</td><td>"+req.body.phone+"</td></tr>"+
+              "<tr><td>Email Id</td><td>"+req.body.email+"</td></tr>"+
+              "<tr><td>State</td><td>"+req.body.state+"</td></tr>"+
+              "<tr><td>City</td><td>"+req.body.city+"</td></tr>"+
+              "Warm Regards, <br/>"+
+              "Team Medicento<br/>"+
+              "<p>This is an auto-generated mail.If you wish to communicatewith us, Please mail us at contact.medicento@gmail.com.</p>"
+              nodeoutlook.sendEmail({
+                auth: {
+                  user: "Team.medicento@outlook.com",
+                  pass: "med4lyf@51"
+                },
+                from: "Team.medicento@outlook.com",
+                to: "" + req.body.email + ",giteshshastri96@gmail.com,contact.medicento@gmail.com",
+                subject: "Hi "+req.body.pharma_name+", You have successfully registered as a Salesman with Medicento!",
+                html: message1
+              });
+              res.status(200).json({
+                code: user1.usercode,
+                message: "user created !"
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(200).json({
+                error: err
+              });
+            });
+        }
+      })
+      .catch((err) => {
+        res.status(200).json({
+          err: err
+        });
+      });
+  }
+});
+
 
 router.get("/login", (req, res, next) => {
   if (req.query.useremail != null) {
