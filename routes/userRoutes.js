@@ -159,7 +159,7 @@ router.post("/login", (req, res, next) => {
               "<tr style=\"background-color: lightgray;color:white\"><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">Drug License No.</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.drug+"</td></tr>"+
               "Warm Regards, <br/>"+
               "Team Medicento<br/>"+
-              "<p>This is an auto-generated mail.If you wish to communicatewith us, Please mail us at contact.medicento@gmail.com.</p>"
+              "<p>This is an auto-generated mail.If you wish to communicatewith us, Please mail us at contact.medicento@gmail.com.</p>";
                  nodeoutlook.sendEmail({
                 auth: {
                   user: "Team.medicento@outlook.com",
