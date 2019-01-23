@@ -136,7 +136,7 @@ router.post("/login", (req, res, next) => {
                 Allocated_Area: req.body.area_id,
                 Allocated_Pharma: pharma._id
               });
-              Area.findById(req.body.area_id).exec().then( area => {
+              Area.findById(person.Allocated_Area).exec().then( area_for_details => {
               person.save();
               console.log(user1);
               message1 = "<p> Hi "+req.body.name +", <br/> Congratulations for successfully registering with Medicento. We are pleased to have you here and looking "+
@@ -151,8 +151,8 @@ router.post("/login", (req, res, next) => {
               "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: lightgray;color:white\"><td>Shop Name</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.pharma_name+"</td></tr>"+
               "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">Owner Name</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
               "<tr style=\"background-color: lightgray;color:white\"><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">Email Id</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.email+"</td></tr>"+
-              "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+area.area_state+"</td></tr>"+
-              "<tr style=\"background-color: lightgray;color:white\"><td>City</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+area.area_city+"</td></tr>"+
+              "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+area_for_details.area_state+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;color:white\"><td>City</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+area_for_details.area_city+"</td></tr>"+
               "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: lightgray;color:white\"><td colspan=\"2\"  style=\"border: 1px solid #ddd;padding: 8px;align:center\">Verification Details</td></tr>"+
               "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">GST No.</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.gst+"</td></tr>"+
               "<tr style=\"background-color: lightgray;color:white\"><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">Drug License No.</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+rreq.body.drug+"</td></tr>"+
