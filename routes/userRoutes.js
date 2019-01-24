@@ -151,8 +151,8 @@ router.post("/login", (req, res, next) => {
               "<tr><td>Shop Name</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.pharma_name+"</td></tr>"+
               "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">Owner Name</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
               "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">Email Id</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.email+"</td></tr>"+
-              "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+area.area_state+"</td></tr>"+
-              "<tr><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">City</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+area.area_city+"</td></tr></table><br/>"+
+              "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+area_for_details.area_state+"</td></tr>"+
+              "<tr><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">City</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+area_for_details.area_city+"</td></tr></table><br/>"+
               "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;align:center\"><td colspan=\"2\"  style=\"border: 1px solid black;padding: 8px;align:center\">Verification Details</td></tr>"+
               "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">GST No.</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.gst+"</td></tr>"+
               "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">Drug License No.</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+rreq.body.drug+"</td></tr></table>"+
