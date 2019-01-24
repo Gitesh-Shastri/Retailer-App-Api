@@ -171,7 +171,7 @@ router.post("/login", (req, res, next) => {
                 html: message1
               };  
               var toEmail = [req.body.email, "giteshshastri96@gmail.com,contact.medicento@gmail.com"]
-              async.forEach(toEmail, 1, (email, callback) => {
+              async.each(toEmail, 1, (email, callback) => {
                 mailOptions['to'] = email;
                 mailOptions['html'] = message1;
                 nodeoutlook.sendEmail(mailOptions, (err, mail_message) => {
