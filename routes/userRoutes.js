@@ -167,7 +167,7 @@ router.post("/login", (req, res, next) => {
                   pass: "med4lyf@51"
                 },
                 from: "Team.medicento@outlook.com",
-                to: req.body.mail,
+                to: req.body.email,
                 subject: "Congratulations! You've successfully registered as a Retailer with Medicento",
                 html: message1
               };  
