@@ -155,7 +155,7 @@ router.post("/login", (req, res, next) => {
               "<tr><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">City</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+area_for_details.area_city+"</td></tr></table><br/>"+
               "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;align:center\"><td colspan=\"2\"  style=\"border: 1px solid black;padding: 8px;align:center\">Verification Details</td></tr>"+
               "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">GST No.</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.gst+"</td></tr>"+
-              "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">Drug License No.</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+rreq.body.drug+"</td></tr></table>"+
+              "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">Drug License No.</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.drug+"</td></tr></table>"+
               "<br/>Warm Regards, <br/>"+
               "Team Medicento<br/><br/>"+
               "<p>This is an auto-generated mail.If you wish to communicatewith us, Please mail us at contact.medicento@gmail.com.</p>"
