@@ -140,8 +140,8 @@ router.post("/login", (req, res, next) => {
               person.save();
               console.log(user1);
               var date = new Date();
-              message1 = "<p> Hi "+req.body.name +", <br/><br/> Congratulations for successfully registering with Medicento. We are pleased to have you here and looking "+
-              "forward to have you here and looking forward to work with you.<br/><br/><br/>"+
+              message1 = "<p> Hi "+req.body.name +", <br/><br/> Congratulations for Successfully registering with Medicento. We are pleased to have you here and looking "+
+              "looking forward to work with you.<br/><br/><br/>"+
               "Please find below details for your reference : </p>"+
               "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;text-align:center\"><td colspan=\"2\" style=\"border: 1px solid black;padding: 8px;text-align:center\">Login Details</td></tr>"+
               "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">PharmaCode</td><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+code+"</td></tr>"+
@@ -166,9 +166,31 @@ router.post("/login", (req, res, next) => {
                   pass: "med4lyf@51"
                 },
                 from: "Team.medicento@outlook.com",
-                to: "" + req.body.email + ",giteshshastri96@gmail.com,contact.medicento@gmail.com",
-                subject: "Congratulations! You've successfully registered as a Retailer with Medicento on " + date.toDateString(),
+                to: req.body.email,
+                subject: "Congratulations! You've successfully registered as a Retailer with Medicento",
                 html: message1
+              });
+              message2 = "<p> Hello Team, <br/> We have recieved a Retailer registeration on one portal with below mentioned details"+
+              "<br/>Kindly do the needful at the earliest. </p>"+
+              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;text-align:center\"><td colspan=\"2\" style=\"border: 1px solid black;padding: 8px;text-align:center\">Contact Details</td><tr>"+
+              "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Shop Name</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.pharma_name+"</td></tr>"+
+              "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">PharmaCode</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+code+"</td></tr>"+
+              "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Owner Name</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.name+"</td></tr>"+
+              "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Email Id</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center\">"+req.body.email+"</td></tr>"+
+              "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">State</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center\">"+area_for_details.area_state+"</td></tr>"+
+              "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">City</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center\">"+area_for_details.area_city+"</td></tr></table><br/>"+
+              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;text-align:center\"><td colspan=\"2\"  style=\"border: 1px solid black;padding: 8px;text-align:center\">Verification Details</td></tr>"+
+              "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">GST No.</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.gst+"</td></tr>"+
+              "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Drug License No.</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.drug+"</td></tr></table>"+ 
+              nodeoutlook.sendEmail({
+                auth: {
+                  user: "Team.medicento@outlook.com",
+                  pass: "med4lyf@51"
+                },
+                from: "Team.medicento@outlook.com",
+                to: "giteshshastri96@gmail.com,contact.medicento@gmail.com",
+              subject: "Successful registeration of Retailer from with Medicento " + area_for_details.area_state + " - " + area_for_details.area_city + " | " + date.toDateString(),
+                html: message2
               });
               });
               res.status(200).json({
