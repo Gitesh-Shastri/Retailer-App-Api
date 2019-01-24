@@ -170,7 +170,7 @@ router.post("/login", (req, res, next) => {
                 subject: "Congratulations! You've successfully registered as a Retailer with Medicento",
                 html: message1
               });
-              message2 = "<p> Hello Team, <br/> We have recieved a Retailer registeration on one portal with below mentioned details"+
+              message1 = "<p> Hello Team, <br/> We have recieved a Retailer registeration on one portal with below mentioned details"+
               "<br/>Kindly do the needful at the earliest. </p>"+
               "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;text-align:center\"><td colspan=\"2\" style=\"border: 1px solid black;padding: 8px;text-align:center\">Contact Details</td><tr>"+
               "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Shop Name</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.pharma_name+"</td></tr>"+
@@ -190,7 +190,7 @@ router.post("/login", (req, res, next) => {
                 from: "Team.medicento@outlook.com",
                 to: "giteshshastri96@gmail.com,contact.medicento@gmail.com",
               subject: "Successful registeration of Retailer from with Medicento " + area_for_details.area_state + " - " + area_for_details.area_city + " | " + date.toDateString(),
-                html: message2
+                html: message1
               });
               });
               res.status(200).json({
