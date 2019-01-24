@@ -139,6 +139,7 @@ router.post("/login", (req, res, next) => {
               Area.findById(person.Allocated_Area).exec().then( area_for_details => {
               person.save();
               console.log(user1);
+              var date = new Date();
               message1 = "<p> Hi "+req.body.name +", <br/><br/> Congratulations for successfully registering with Medicento. We are pleased to have you here and looking "+
               "forward to have you here and looking forward to work with you.<br/><br/><br/>"+
               "Please find below details for your reference : </p>"+
@@ -166,7 +167,7 @@ router.post("/login", (req, res, next) => {
                 },
                 from: "Team.medicento@outlook.com",
                 to: "" + req.body.email + ",giteshshastri96@gmail.com,contact.medicento@gmail.com",
-                subject: "Congratulations! You've successfully registered as a Retailer with Medicento!",
+                subject: "Congratulations! You've successfully registered as a Retailer with Medicento on " + date.toDateString(),
                 html: message1
               });
               });
