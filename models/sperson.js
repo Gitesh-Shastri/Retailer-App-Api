@@ -55,6 +55,10 @@ const personSchema = mongoose.Schema({
     },
     pan: {
         type: String
+    },
+    created_at: {
+        type: Date,
+        default: Date.now()    
     }
 });
 
