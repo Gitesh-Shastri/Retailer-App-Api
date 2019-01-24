@@ -181,11 +181,14 @@ router.post("/login", (req, res, next) => {
                   }     
                 });
               });
-              res.status(200).json({
+         /*      res.status(200).json({
                 code: user1.usercode,
                 message: "user created !"
               });
-            })
+          */   
+         req.body.code = user.usercode;
+         res.redirect('/emailToTeam');
+        })
             .catch((err) => {
               console.log(err);
               res.status(200).json({
@@ -227,7 +230,6 @@ router.get('/emailToTeam', (req, res, next) => {
     subject: "Congratulations! You've successfully registered as a Retailer with Medicento",
     html: message1
   };  
-
   nodeoutlook.sendEmail(mailOptions, (err, mail_message) => {
     if(err) {
       console.log(err);
