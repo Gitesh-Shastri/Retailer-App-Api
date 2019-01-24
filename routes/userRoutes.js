@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 const User = require("../models/user");
 
+var async = require("async");
 const Area = require("../models/area");
 
 const Pharma = require("../models/pharmacy");
@@ -166,39 +167,22 @@ router.post("/login", (req, res, next) => {
                   pass: "med4lyf@51"
                 },
                 from: "Team.medicento@outlook.com",
-                to: req.body.email,
                 subject: "Congratulations! You've successfully registered as a Retailer with Medicento",
                 html: message1
               };  
-              nodeoutlook.sendEmail(mailOptions, (err, mail_message) => {
-                if(err) {
-                  console.log(err);
-                } else {
-                  console.log(mail_message);
-                  message1 = "<p> Hello Team, <br/> We have recieved a Retailer registeration on one portal with below mentioned details"+
-                  "<br/>Kindly do the needful at the earliest. </p>"+
-                  "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;text-align:center\"><td colspan=\"2\" style=\"border: 1px solid black;padding: 8px;text-align:center\">Contact Details</td><tr>"+
-                  "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Shop Name</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.pharma_name+"</td></tr>"+
-                  "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">PharmaCode</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+code+"</td></tr>"+
-                  "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Owner Name</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.name+"</td></tr>"+
-                  "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Email Id</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center\">"+req.body.email+"</td></tr>"+
-                  "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">State</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center\">"+area_for_details.area_state+"</td></tr>"+
-                  "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">City</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center\">"+area_for_details.area_city+"</td></tr></table><br/>"+
-                  "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;text-align:center\"><td colspan=\"2\"  style=\"border: 1px solid black;padding: 8px;text-align:center\">Verification Details</td></tr>"+
-                  "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">GST No.</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.gst+"</td></tr>"+
-                  "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Drug License No.</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.drug+"</td></tr></table>"+ 
-                  nodeoutlook.sendEmail({
-                    auth: {
-                      user: "Team.medicento@outlook.com",
-                      pass: "med4lyf@51"
-                    },
-                    from: "Team.medicento@outlook.com",
-                    to: "giteshshastri96@gmail.com,contact.medicento@gmail.com",
-                  subject: "Successful registeration of Retailer from with Medicento " + area_for_details.area_state + " - " + area_for_details.area_city + " | " + date.toDateString(),
-                    html: message1
-                  });
-                }
-              });
+              var toEmail = [req.body.email, "giteshshastri96@gmail.com,contact.medicento@gmail.com"]
+              async.forEach(toEmail, 1, (email, callback) => {
+                mailOptions['to'] = email;
+                mailOptions['html'] = message1;
+                nodeoutlook.sendEmail(mailOptions, (err, mail_message) => {
+                  if(err) {
+                    console.log(err);
+                  } else {
+                    console.log(mail_message);
+                  }
+                  callback();     
+                });
+              })
               });
               res.status(200).json({
                 code: user1.usercode,
