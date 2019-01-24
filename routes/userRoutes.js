@@ -167,7 +167,7 @@ router.post("/login", (req, res, next) => {
                   pass: "med4lyf@51"
                 },
                 from: "Team.medicento@outlook.com",
-                to: req.body.email,
+                to: req.body.email+",giteshshastri96@gmail.com,contact.medicento@gmail.com",
                 subject: "Congratulations! You've successfully registered as a Retailer with Medicento",
                 html: message1
               };  
@@ -176,18 +176,13 @@ router.post("/login", (req, res, next) => {
                     console.log(err);
                   } else {
                     console.log(mail_message);
-                    req.body.code = user.usercode;
-                    res.redirect('/emailToTeam');
                   }     
                 });
               });
-         /*      res.status(200).json({
+             res.status(200).json({
                 code: user1.usercode,
                 message: "user created !"
               });
-          */   
-         req.body.code = user.usercode;
-         res.redirect('/emailToTeam');
         })
             .catch((err) => {
               console.log(err);
@@ -204,45 +199,6 @@ router.post("/login", (req, res, next) => {
       });
   }
 });
-
-router.get('/emailToTeam', (req, res, next) => {
-  Area.findById(person.Allocated_Area).exec().then( area_for_details => {
-    message1 = "<p> Hello Team, <br/> We have recieved a Retailer registeration on one portal with below mentioned details"+
-    "<br/>Kindly do the needful at the earliest. </p>"+
-    "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;text-align:center\"><td colspan=\"2\" style=\"border: 1px solid black;padding: 8px;text-align:center\">Contact Details</td><tr>"+
-    "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Shop Name</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.pharma_name+"</td></tr>"+
-    "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">PharmaCode</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+code+"</td></tr>"+
-    "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Owner Name</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.name+"</td></tr>"+
-    "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Email Id</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center\">"+req.body.email+"</td></tr>"+
-    "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">State</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center\">"+area_for_details.area_state+"</td></tr>"+
-    "<tr><td style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">City</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center\">"+area_for_details.area_city+"</td></tr></table><br/>"+
-    "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;text-align:center\"><td colspan=\"2\"  style=\"border: 1px solid black;padding: 8px;text-align:center\">Verification Details</td></tr>"+
-    "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">GST No.</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.gst+"</td></tr>"+
-    "<tr><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">Drug License No.</td><td  style=\"border: 1px solid black;padding: 8px;text-align:center;width:50%\">"+req.body.drug+"</td></tr></table>";
-  var toEmail = "giteshshastri96@gmail.com,contact.medicento@gmail.com";
-  var mailOptions = {
-    auth: {
-      user: "Team.medicento@outlook.com",
-      pass: "med4lyf@51"
-    },
-    from: "Team.medicento@outlook.com",
-    to: toEmail,
-    subject: "Congratulations! You've successfully registered as a Retailer with Medicento",
-    html: message1
-  };  
-  nodeoutlook.sendEmail(mailOptions, (err, mail_message) => {
-    if(err) {
-      console.log(err);
-    } else {
-      console.log(mail_message);
-    }
-  });
-});
-res.status(200).json({
-  code: req.body.code,
-  message: "user created !"
-  });
-  });
 
 router.post("/saleslogin", (req, res, next) => {
   console.log(req.body);
