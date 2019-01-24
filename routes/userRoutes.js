@@ -139,7 +139,6 @@ router.post("/login", (req, res, next) => {
               Area.findById(person.Allocated_Area).exec().then( area_for_details => {
               person.save();
               console.log(user1);
-<<<<<<< HEAD
               message1 = "<p> Hi "+req.body.name +", <br/><br/> Congratulations for successfully registering with Medicento. We are pleased to have you here and looking "+
               "forward to have you here and looking forward to work with you.<br/><br/><br/>"+
               "Please find below details for your reference : </p>"+
@@ -160,29 +159,6 @@ router.post("/login", (req, res, next) => {
               "<br/>Warm Regards, <br/>"+
               "Team Medicento<br/><br/>"+
               "<p>This is an auto-generated mail.If you wish to communicatewith us, Please mail us at contact.medicento@gmail.com.</p>"
-=======
-              message1 = "<p> Hi "+req.body.name +", <br/> Congratulations for successfully registering with Medicento. We are pleased to have you here and looking "+
-              "forward to have you here and looking forward to work with you.<br/><br/>"+
-              "Please find below details for your reference : </p>"+
-              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: darkgray;color:white\"><td colspan=\"2\" style=\"border: 1px solid #ddd;padding: 8px;align:center\">Login Details</td></tr>"+
-              "<tr><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">PharmaCode</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+code+"</td></tr>"+
-              "<tr style=\"background-color: lightgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Registered Mobile No.</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
-              "<br/>Url to download the <b>Medicento Retailer App!</b><br/>"+
-              "https://play.google.com/store/apps/details?id=com.medicento.retailerappmedi<br/>"+
-  
-              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: darkgray;color:white\"><td colspan=\"2\" style=\"border: 1px solid #ddd;padding: 8px;align:center\">Contact Details</td></tr>"+
-               "<tr style=\"background-color: lightgray;color:white\"><td>Shop Name</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.pharma_name+"</td></tr>"+
-              "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">Owner Name</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
-              "<tr style=\"background-color: lightgray;color:white\"><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">Email Id</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.email+"</td></tr>"+
-              "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+area_for_details.area_state+"</td></tr>"+
-              "<tr style=\"background-color: lightgray;color:white\"><td>City</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+area_for_details.area_city+"</td></tr></table>"+
-              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: darkgray;color:white\"><td colspan=\"2\"  style=\"border: 1px solid #ddd;padding: 8px;align:center\">Verification Details</td></tr>"+
-              "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">GST No.</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.gst+"</td></tr>"+
-              "<tr style=\"background-color: lightgray;color:white\"><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">Drug License No.</td><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.drug+"</td></tr>"+
-              "Warm Regards, <br/>"+
-              "Team Medicento<br/>"+
-              "<p>This is an auto-generated mail.If you wish to communicatewith us, Please mail us at contact.medicento@gmail.com.</p>";
->>>>>>> 6811c1edc4117fd53158585b9533496effe6593c
                  nodeoutlook.sendEmail({
                 auth: {
                   user: "Team.medicento@outlook.com",
@@ -334,27 +310,24 @@ router.post("/saleslogin", (req, res, next) => {
               });
               person.save();
               console.log(user1);
-              message1 = "<p> Hi "+req.body.name +", <br/><br/> Congratulations for successfully registering with Medicento. We are pleased to have you here and looking "+
-              "forward to have you here and looking forward to work with you.<br/><br/><br/>"+
-              "Please find below details for your reference : </p>"+
-              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;align:center\"><td colspan=\"2\" style=\"border: 1px solid black;padding: 8px;align:center\">Login Details</td></tr>"+
-              "<tr><td style=\"border: 1px solid black;padding: 8px;align:center\">PharmaCode</td><td style=\"border: 1px solid black;padding: 8px;align:center\">"+code+"</td></tr>"+
-              "<tr><td style=\"border: 1px solid black;padding: 8px;align:center\">Registered Mobile No.</td><td style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.phone+"</td></tr></table>"+
-              "<br/>Url to download the <b>Medicento Retailer App!</b><br/>"+
-              "https://play.google.com/store/apps/details?id=com.medicento.retailerappmedi<br/>"+
-              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;align:center\"><td colspan=\"2\" style=\"border: 1px solid black;padding: 8px;align:center\">Contact Details</td><tr>"+
-              "<tr><td>Shop Name</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.pharma_name+"</td></tr>"+
-              "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">Owner Name</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
-              "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">Email Id</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.email+"</td></tr>"+
-              "<tr><td  style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+area.area_state+"</td></tr>"+
-              "<tr><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">City</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+area.area_city+"</td></tr></table><br/>"+
-              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: #1F3864;color:white;align:center\"><td colspan=\"2\"  style=\"border: 1px solid black;padding: 8px;align:center\">Verification Details</td></tr>"+
-              "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">GST No.</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+req.body.gst+"</td></tr>"+
-              "<tr><td  style=\"border: 1px solid black;padding: 8px;align:center\">Drug License No.</td><td  style=\"border: 1px solid black;padding: 8px;align:center\">"+rreq.body.drug+"</td></tr></table>"+
-              "<br/>Warm Regards, <br/>"+
-              "Team Medicento<br/><br/>"+
-              "<p>This is an auto-generated mail.If you wish to communicatewith us, Please mail us at contact.medicento@gmail.com.</p>"
-                nodeoutlook.sendEmail({
+              message1 = "<p> Dear "+req.body.pharma_name +", <br/> Warm greetings from Medicento! <br/> Congratulations You have successfully registered as a Salesman with Medicento. Please"+
+              " find below details for your reference : </p>"+
+              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: darkgray;color:white\"><th colspan=\"2\" style=\"border: 1px solid #ddd;padding: 8px;align:center\">Login Details</th></tr>"+
+              "<tr ><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">SalesId/Username</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.salesId+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Password</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.password+"</td></tr></table>"+
+              "<br/>URL to download the <b>Medicento Sales App!</b><br/>"+
+              "https://play.google.com/store/apps/details?id=com.medicento.salesappmedicento<br/>"+
+              "<br/>"+
+              "<table width=\"100%\" style=\"border-collapse: collapse;\"><tr style=\"background-color: darkgray;color:white\"><th colspan=\"2\" style=\"border: 1px solid #ddd;padding: 8px;align:center\">Contact Details</th></tr>"
+              +"<tr ><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">salesman name</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.pharma_name+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Phone No.</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.phone+"</td></tr>"+
+              "<tr ><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">Email Id</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.email+"</td></tr>"+
+              "<tr style=\"background-color: lightgray;color:white\"><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">State</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.state+"</td></tr>"+
+              "<tr ><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">City</td><td style=\"border: 1px solid #ddd;padding: 8px;align:center\">"+req.body.city+"</td></tr></table>"+
+              "<br/><br/>Warm Regards, <br/>"+
+              "Team Medicento<br/>"+
+              "<p>This is an auto-generated mail.If you wish to communicate with us, Please mail <br/>us at contact.medicento@gmail.com.</p>"
+              nodeoutlook.sendEmail({
                 auth: {
                   user: "Team.medicento@outlook.com",
                   pass: "med4lyf@51"
