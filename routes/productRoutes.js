@@ -16,14 +16,15 @@ const Camp = require("../models/camp");
 const fast_csv = require("fast-csv");
 const vpiinventory = require("../models/vpimedicine");
 var nodeoutlook = require("nodejs-nodemailer-outlook");
+const tulsiinverntory = require("../models/tulsimedicines");
 
 router.get("/medimap", (req, res) => {
-    vpiinventory
+    tulsiinverntory
         .find()
         .sort({
             Item_name: 1
         })
-        .select("Item_name manfc_name mrp qty item_code packing")
+        .select("Item_name manfc_name mrp qty item_code")
         .exec()
         .then(docs => {
             const response = {
@@ -35,7 +36,6 @@ router.get("/medimap", (req, res) => {
                         price: doc.mrp,
                         stock: doc.qty,
                         item_code: doc.item_code,
-                        packing: doc.packing,
                         _id: doc._id
                     };
                 })

@@ -7,41 +7,29 @@ const pharmaSchema = mongoose.Schema({
 		ref: 'Area'
 	},
 	pharma_name: {
-		type: String,
-		default: "-"
+		type: String
 	},
 	pharma_address: {
-		type: String,
-		default: "-"
+		type: String
 	},
 	gst_license: {
-		type: String,
-		default: "-"
+		type: String
 	},
 	drug_license: {
-		type: String,
-		default: "-"
+		type: String
 	},
 	email: {
-		type: String,
-		default: "-"
+		type: String
 	},
 	contact: {
-		type: String,
-		default: "-"
+		type: String
 	},
 	owner_name: {
-		type: String,
-		default: "-"
+		type: String
 	},
 	pincode: {
-		type: String,
-		default: "-"	
-	},
-    created_at: {
-        type: Date,
-        default: Date.now()    
-    }
+		type: String	
+	}
 });
 
 module.exports = mongoose.model('Pharmacy', pharmaSchema);

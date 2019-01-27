@@ -9,12 +9,6 @@ const personSchema = mongoose.Schema({
     Name: {
         type: String
     },
-    state: {
-        type: String
-    },
-    city: {
-        type: String
-    },
     Allocated_Area: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Area"
@@ -46,19 +40,6 @@ const personSchema = mongoose.Schema({
     Earnings: {
         type: Number,
         default: 0
-    },
-    address: {
-        type: String
-    },
-    driving: {
-        type: String
-    },
-    pan: {
-        type: String
-    },
-    created_at: {
-        type: Date,
-        default: Date.now()    
     }
 });
 
