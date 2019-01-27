@@ -24,7 +24,7 @@ router.get("/medimap", (req, res) => {
         .sort({
             Item_name: 1
         })
-        .select("Item_name manfc_name mrp qty item_code")
+        .select("Item_name manfc_name mrp qty item_code packing")
         .exec()
         .then(docs => {
             const response = {
