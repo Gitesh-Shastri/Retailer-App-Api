@@ -36,7 +36,8 @@ router.get("/medimap", (req, res) => {
                         price: doc.mrp,
                         stock: doc.qty,
                         item_code: doc.item_code,
-                        _id: doc._id
+                        _id: doc._id,
+                        packing: doc.packing
                     };
                 })
             };
