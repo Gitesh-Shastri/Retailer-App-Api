@@ -367,7 +367,6 @@ router.post("/saleslogin", (req, res, next) => {
   }
 });
 
-
 router.get("/login", (req, res, next) => {
   if (req.query.useremail != null) {
     User.findOne({
@@ -493,9 +492,11 @@ router.get("/pharmaById/:id", (req, res, next) => {
 router.get("/forgetPhone", (req, res, next) => {
   console.log(req.query);
   if (req.query.phone != undefined) {
-    User.find({
+    User.find({$or: [{
         phone: req.query.phone
-      })
+      }, {
+        useremail: req.query.phone
+      }]})
       .exec()
       .then((phone) => {
         res.status(200).json({
