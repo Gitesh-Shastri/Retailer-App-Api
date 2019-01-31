@@ -422,6 +422,7 @@ router.get("/login", (req, res, next) => {
         Person.find({
             user: user._id
           })
+          .populate('user')
           .exec()
           .then((doc) => {
             res.status(200).json({
