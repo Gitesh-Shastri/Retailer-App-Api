@@ -490,6 +490,22 @@ router.get("/pharmaById/:id", (req, res, next) => {
     });
 });
 
+router.get('/getProfile', (req, res, next) => {
+  Person.findOne({_id: req.query.id})
+  .populate('Allocated_Area')
+  .populate('Allocated_Pharma')
+  .populate('user')
+  .exec()
+  .then( doc => {
+    res.status(200).json(doc);
+  })
+  .catch(err => {
+    res.status(200).json({
+      message: err
+    });
+  });
+});
+
 router.get("/forgetPhone", (req, res, next) => {
   console.log(req.query);
   if (req.query.phone != undefined) {

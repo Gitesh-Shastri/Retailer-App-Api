@@ -29,6 +29,9 @@ const pharmaSchema = mongoose.Schema({
 	},
 	pincode: {
 		type: String	
+	},
+	pan_card: {
+		type: String	
 	}
 });
 

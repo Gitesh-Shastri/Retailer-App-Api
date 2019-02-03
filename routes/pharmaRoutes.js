@@ -61,13 +61,13 @@ router.get('/updatePharma', (req, res, next) => {
     .populate('user')
     .exec()
     .then(doc=> {  
-        Pharmacy.update({_id: doc.Allocated_Pharma._id}, {$set: {contact: req.query.phone, email: req.query.email, area: req.query.area}})
+         Pharmacy.update({_id: doc.Allocated_Pharma._id}, {$set: {contact: req.query.phone, email: req.query.email, area: req.query.area}})
         .exec(); 
         User.update({_id: doc.user._id}, {$set: {phone: req.query.phone}})
         .exec();    
         Person.update({_id: doc._id}, {$set: {Allocated_Area: req.query.area}})
         .exec();   
-        res.status(200).json({message: 'updated', data: doc});
+         res.status(200).json({message: 'updated', data: doc});
     })
     .catch(err => {
         console.log(err);
@@ -76,6 +76,8 @@ router.get('/updatePharma', (req, res, next) => {
         });
     });
 });
+
+
 
 router.post('/update/:pharmaId', (req, res, next) => {
     const id = req.params.pharmaId;
