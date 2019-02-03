@@ -56,7 +56,7 @@ router.post('/new', (req, res, next) => {
 });
 
 router.post('/updateUserProfile', (req, res, next) => {
-    Person.findOne({_id:req.query.id})
+    Person.findOne({_id:req.body.id})
     .populate('Allocated_Pharma')
     .populate('user')
     .exec()
