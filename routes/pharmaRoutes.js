@@ -55,7 +55,7 @@ router.post('/new', (req, res, next) => {
     });
 });
 
-router.get('/updateUserProfile', (req, res, next) => {
+router.post('/updateUserProfile', (req, res, next) => {
     Person.findOne({_id:req.query.id})
     .populate('Allocated_Pharma')
     .populate('user')
