@@ -55,13 +55,33 @@ router.post('/new', (req, res, next) => {
     });
 });
 
+router.get('/updateUserProfile', (req, res, next) => {
+    Person.findOne({_id:req.query.id})
+    .populate('Allocated_Pharma')
+    .populate('user')
+    .exec()
+    .then(doc=> {  
+        Pharmacy.update({_id: doc.Allocated_Pharma._id}, {$set: {contact: req.body.phone, email: req.body.email, gst_license: req.body.gst, drug_license: req.body.drug, pan_card: req.body.pan}})
+        .exec(); 
+        User.update({_id: doc.user._id}, {$set: {phone: req.body.phone, first: req.body.first, second: req.body.second, username: req.body.username, useremail: req.body.email}})
+        .exec();    
+        res.status(200).json({message: 'updated', data: doc});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(200).json({
+            error: err
+        });
+    });
+});
+
 router.get('/updatePharma', (req, res, next) => {
     Person.findOne({_id:req.query.id})
     .populate('Allocated_Pharma')
     .populate('user')
     .exec()
     .then(doc=> {  
-         Pharmacy.update({_id: doc.Allocated_Pharma._id}, {$set: {contact: req.query.phone, email: req.query.email, area: req.query.area}})
+        Pharmacy.update({_id: doc.Allocated_Pharma._id}, {$set: {contact: req.query.phone, email: req.query.email, area: req.query.area}})
         .exec(); 
         User.update({_id: doc.user._id}, {$set: {phone: req.query.phone}})
         .exec();    
@@ -71,7 +91,7 @@ router.get('/updatePharma', (req, res, next) => {
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json({
+        res.status(200).json({
             error: err
         });
     });
