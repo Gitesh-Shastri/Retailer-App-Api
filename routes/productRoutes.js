@@ -19,7 +19,7 @@ var nodeoutlook = require("nodejs-nodemailer-outlook");
 const tulsiinverntory = require("../models/tulsimedicines");
 
 router.get("/medimap", (req, res) => {
-    tulsiinverntory
+    vpiinventory
         .find()
         .sort({
             Item_name: 1
