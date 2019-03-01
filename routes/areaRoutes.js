@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
+const area = require('../models/area');
+
 const AreasController = require('../controllers/area');
 
 router.get('/', AreasController.area_get_all);

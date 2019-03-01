@@ -41,6 +41,14 @@ const pharmaSchema = mongoose.Schema({
 	pan_card: {
 		type: String,
 		default: "-"	
+	},
+	distributor: {
+		type: String,
+		default: "-"
+	},
+	distributor_Code: {
+		type: String,
+		default: "-"
 	}
 });
 

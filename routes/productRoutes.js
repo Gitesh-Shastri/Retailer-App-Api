@@ -19,6 +19,7 @@ var nodeoutlook = require("nodejs-nodemailer-outlook");
 const tulsiinverntory = require("../models/tulsimedicines");
 
 router.get("/medimap", (req, res) => {
+    if(req.query.id == undefined) {
     vpiinventory
         .find()
         .sort({
@@ -49,8 +50,118 @@ router.get("/medimap", (req, res) => {
                 error: err
             });
         });
+    } else {
+        Pharmacy.findById(req.query.id)
+        .exec()
+        .then( pharma => {
+            console.log(pharma.distributor);
+            if(pharma.distributor == 'tulsi') {
+                tulsiinverntory
+        .find()
+        .sort({
+            Item_name: 1
+        })
+        .select("Item_name manfc_name mrp qty item_code packing")
+        .exec()
+        .then(docs => {
+            const response = {
+                count: docs.length,
+                products: docs.map(doc => {
+                    return {
+                        medicento_name: doc.Item_name,
+                        company_name: doc.manfc_name,
+                        price: doc.mrp,
+                        stock: doc.qty,
+                        item_code: doc.item_code,
+                        _id: doc._id,
+                        packing: doc.packing
+                    };
+                })
+            };
+            res.status(200).json(response);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+            } else {
+                vpiinventory
+                .find()
+                .sort({
+                    Item_name: 1
+                })
+                .select("Item_name manfc_name mrp qty item_code packing")
+                .exec()
+                .then(docs => {
+                    const response = {
+                        count: docs.length,
+                        products: docs.map(doc => {
+                            return {
+                                medicento_name: doc.Item_name,
+                                company_name: doc.manfc_name,
+                                price: doc.mrp,
+                                stock: doc.qty,
+                                item_code: doc.item_code,
+                                _id: doc._id,
+                                packing: doc.packing
+                            };
+                        })
+                    };
+                    res.status(200).json(response);
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+            }
+        })
+        .catch(err => {
+            vpiinventory
+        .find()
+        .sort({
+            Item_name: 1
+        })
+        .select("Item_name manfc_name mrp qty item_code packing")
+        .exec()
+        .then(docs => {
+            const response = {
+                count: docs.length,
+                products: docs.map(doc => {
+                    return {
+                        medicento_name: doc.Item_name,
+                        company_name: doc.manfc_name,
+                        price: doc.mrp,
+                        stock: doc.qty,
+                        item_code: doc.item_code,
+                        _id: doc._id,
+                        packing: doc.packing
+                    };
+                })
+            };
+            res.status(200).json(response);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+        })
+    }
 });
 
+router.get('/slaes', (req, res, next) => {
+    Person.find({Allocated_Pharma: req.query.id})
+    .populate('user')
+    .exec()
+    .then( doc => {
+        res.status(200).json(doc);
+    })
+});
 
 router.post("/order", (req, res, next) => {
     const log = new Log();
