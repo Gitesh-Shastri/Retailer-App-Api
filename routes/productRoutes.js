@@ -385,11 +385,11 @@ router.get('/updateApp', (req, res, next) => {
                 code: doc[0].code,
                 count: doc[0].count,
                 "Version": [{
-                    "version": "2.1.8",
+                    "version": "2.1.9",
                     "error": "01"
                 }],
                 "Controle": [{
-                    "version": "2.1.8",
+                    "version": "2.1.9",
                     "error": "01"
                 }]
             })
