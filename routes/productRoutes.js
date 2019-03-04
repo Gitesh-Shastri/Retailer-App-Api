@@ -20,7 +20,7 @@ const tulsiinverntory = require("../models/tulsimedicines");
 
 router.get("/medimap", (req, res) => {
     if(req.query.id == undefined) {
-    vpiinventory
+    tulsiinverntory
         .find()
         .sort({
             Item_name: 1
@@ -87,7 +87,7 @@ router.get("/medimap", (req, res) => {
             });
         });
             } else {
-                vpiinventory
+                tulsiinverntory
                 .find()
                 .sort({
                     Item_name: 1
@@ -120,7 +120,7 @@ router.get("/medimap", (req, res) => {
             }
         })
         .catch(err => {
-            vpiinventory
+            tulsiinverntory
         .find()
         .sort({
             Item_name: 1
