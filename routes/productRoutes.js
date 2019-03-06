@@ -155,8 +155,8 @@ router.get("/medimap", (req, res) => {
 });
 
 router.get('/slaes', (req, res, next) => {
-    Person.find({Allocated_Pharma: req.query.id})
-    .populate('user')
+    Person.find({user: "5c163d7467e2180023a1151f"})
+    .populate('Allocated_Pharma')
     .exec()
     .then( doc => {
         res.status(200).json(doc);
@@ -217,7 +217,7 @@ router.post("/order", (req, res, next) => {
                             orderItem.save();
                             orders.push(orderItem._id);
                             csv +=
-                                salesP.user.useremail +
+                                docp.distributor_Code +
                                 "," +
                                 req.body[i].code +
                                 "," +
