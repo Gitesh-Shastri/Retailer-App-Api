@@ -106,11 +106,7 @@ router.post("/order", (req, res, next) => {
                             orderItem.save();
                             orders.push(orderItem._id);
                             csv +=
-<<<<<<< HEAD
                                 docp.distributor_Code +
-=======
-                                 docp.distributor_Code +
->>>>>>> 3a04d4b23670df15e3aede7722c391969b40b793
                                 "," +
                                 req.body[i].code +
                                 "," +
