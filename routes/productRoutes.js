@@ -20,7 +20,7 @@ const tulsiinverntory = require("../models/tulsimedicines");
 
 router.get("/medimap", (req, res) => {
     tulsiinverntory
-        .find()
+        .find({ mrp: {$ne: 0} })
         .sort({
             Item_name: 1
         })
@@ -52,6 +52,7 @@ router.get("/medimap", (req, res) => {
             });
         });
 });
+
 router.post("/order", (req, res, next) => {
     const log = new Log();
     log.logd = JSON.stringify(req.body);
