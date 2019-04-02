@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const Area = require('../models/area');
 
+const State = require('../models/medicento_state');
+
+const City = require('../models/medicento_city');
+
 exports.area_get_all = function (req, res) {
     Area.find()
         .select('area_city area_state area_pincode area_name')
@@ -108,3 +112,63 @@ exports.area_delete_by_id = function (req, res) {
             });
         });
 }
+
+exports.create_state = function (req, res) {
+
+    var state  = new State();
+    state.name = req.body.name;
+    state.save()
+        .then( state_doc => {
+            res.status(200).json({state: state_doc, message: 'Created State'});
+        })
+        .catch( err => {
+            res.status(200).json({message: err.errmsg});
+        });
+
+   
+
+};
+
+exports.get_all_state = function (req, res) {
+
+        State.find({})
+        .sort({ name: 1 })
+        .then( state_doc => {
+            res.status(200).json({state: state_doc, message: 'State List'});
+        })
+        .catch( err => {
+            res.status(200).json({message: err.errmsg});
+        });
+
+};
+
+
+exports.create_city = function (req, res) {
+
+    var city  = new City();
+    city.name = req.body.name;
+    city.state = req.body.state;
+    city.save()
+        .then( city_doc => {
+            res.status(200).json({state: city_doc, message: 'Created City'});
+        })
+        .catch( err => {
+            res.status(200).json({message: err.errmsg});
+        });
+
+   
+
+};
+
+exports.get_all_city_by_state = function (req, res) {
+
+        City.find({state: req.body.state})
+        .sort({ name: 1 })
+        .then( city_doc => {
+            res.status(200).json({state: city_doc, message: 'City List'});
+        })
+        .catch( err => {
+            res.status(200).json({message: err.errmsg});
+        });
+
+};

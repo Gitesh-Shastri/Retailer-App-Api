@@ -8,6 +8,14 @@ const AreasController = require('../controllers/area');
 
 router.get('/', AreasController.area_get_all);
 
+router.get('/get_states', AreasController.get_all_state);
+
+router.post('/new_state', AreasController.create_state);
+
+router.get('/get_cities_by_state', AreasController.get_all_city_by_state);
+
+router.post('/new_city', AreasController.create_city);
+
 router.post('/new', AreasController.create_area);
 
 router.get('/:areaId', AreasController.area_get_by_id);

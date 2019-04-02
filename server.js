@@ -5,6 +5,7 @@ const areaRoutes = require('./routes/areaRoutes');
 const pharmaRoutes = require('./routes/pharmaRoutes');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
+const defaultRoutes = require('./routes/default');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use('/app', defaultRoutes);
 app.use('/area', areaRoutes);
 app.use('/product', productRoutes);
 app.use('/user', userRoutes);
