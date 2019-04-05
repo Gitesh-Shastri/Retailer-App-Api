@@ -39,7 +39,7 @@ router.get('/area_by_name', (req, res, next) => {
 
 });
 
-router.get('/area_by_name_pincode', (req, res, next) => {
+router.post('/area_by_name_pincode', (req, res, next) => {
 
     area.find({area_city: req.body.city})
         .select('area_city area_state area_pincode area_name')
